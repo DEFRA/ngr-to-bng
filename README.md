@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.org/EnvironmentAgency/ngr-to-bng.svg?branch=master)](https://travis-ci.org/EnvironmentAgency/ngr-to-bng)
+
 # NGR-to-BNG
 
 Script to convert Grid reference (NGR) to Easting and Northing (BNG)
