@@ -1,6 +1,6 @@
 {
   "name": "ngr-to-bng",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "type": "module",
   "description": "Script to convert Grid reference (NGR) to Easting and Northing (BNG)",
   "main": "index.js",
@@ -11,14 +11,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/EnvironmentAgency/ngr-to-bng"
+    "url": "https://github.com/DEFRA/ngr-to-bng"
   },
-  "author": "Environment Agency",
+  "author": "DEFRA",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/EnvironmentAgency/ngr-to-bng/issues"
+    "url": "https://github.com/DEFRA/ngr-to-bng/issues"
   },
-  "homepage": "https://github.com/EnvironmentAgency/ngr-to-bng#README.md",
+  "homepage": "https://github.com/DEFRA/ngr-to-bng#README.md",
   "devDependencies": {
     "@babel/preset-env": "7.20.2",
     "jest": "29.5.0",
