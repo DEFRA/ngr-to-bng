@@ -1,3 +1,5 @@
+[![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=DEFRA_ngr-to-bng&metric=alert_status)](https://sonarcloud.io/summary/new_code?id=DEFRA_ngr-to-bng)
+
 # NGR-to-BNG
 
 Script to convert Grid reference (NGR) to Easting and Northing (BNG)
