@@ -36,7 +36,7 @@ const getPart1 = ngr => {
 
 const getPart2 = ngr => ngr.substr(2)
 
-const getPart3 = (ngr, part2) => {
+const getPart3 = part2 => {
   let part3 = part2.substr(0, part2.length / 2)
   while (part3.length < 5) {
     part3 += '0'
@@ -44,7 +44,7 @@ const getPart3 = (ngr, part2) => {
   return part3
 }
 
-const getPart4 = (ngr, part2) => {
+const getPart4 = part2 => {
   let part4 = part2.substr(part2.length / 2)
   while (part4.length < 5) {
     part4 += '0'
@@ -70,11 +70,11 @@ const ngrToBng = ngr => {
     return {}
   }
 
-  const part3 = getPart3(ngr, part2)
+  const part3 = getPart3(part2)
 
   point.easting += parseInt(part3, 10)
 
-  const part4 = getPart4(ngr, part2)
+  const part4 = getPart4(part2)
 
   point.northing += parseInt(part4, 10)
 
