@@ -1,6 +1,6 @@
 {
-  "name": "ngr-to-bng",
-  "version": "1.0.1",
+  "name": "@defra/ngr-to-bng",
+  "version": "1.0.2",
   "type": "module",
   "description": "Script to convert Grid reference (NGR) to Easting and Northing (BNG)",
   "main": "index.js",

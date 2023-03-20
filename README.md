@@ -7,7 +7,7 @@ Script to convert Grid reference (NGR) to Easting and Northing (BNG)
 ## Installation
 
 ```
-npm install --save ngr-to-bng
+npm install --save @defra/ngr-to-bng
 ```
 ## Usage
 
