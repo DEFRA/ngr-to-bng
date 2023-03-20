@@ -1,11 +1,16 @@
-'use strict'
+const end = (easting, northing) => {
+  return {
+    easting,
+    northing
+  }
+}
 
-module.exports = function (ngr) {
+const ngrToBng = (ngr) => {
   let easting, northing
 
   ngr = ngr.toUpperCase()
 
-  let bits = ngr.split(' ')
+  const bits = ngr.split(' ')
   ngr = ''
   for (let i = 0; i < bits.length; i++) {
     ngr += bits[i]
@@ -48,7 +53,7 @@ module.exports = function (ngr) {
   easting += (i % 5) * 100000
   northing += (4 - Math.floor(i / 5)) * 100000
 
-  let ii = ngr.substr(2)
+  const ii = ngr.substr(2)
   if ((ii.length % 2) === 1 || ii.length > 10) {
     return end()
   }
@@ -77,11 +82,6 @@ module.exports = function (ngr) {
   }
 
   return end(easting, northing)
-
-  function end (easting, northing) {
-    return {
-      easting: easting,
-      northing: northing
-    }
-  }
 }
+
+export default ngrToBng
