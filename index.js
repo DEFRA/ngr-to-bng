@@ -1,48 +1,37 @@
-const end = (easting, northing) => {
-  return {
-    easting,
-    northing
-  }
-}
-
-const ngrToBng = (ngr) => {
-  let easting, northing
-
-  ngr = ngr.toUpperCase()
-
-  const bits = ngr.split(' ')
-  ngr = ''
-  for (let i = 0; i < bits.length; i++) {
-    ngr += bits[i]
-  }
-
+const getBaseValues = ngr => {
+  const point = {}
   switch (ngr.charAt(0)) {
     case 'S':
-      easting = 0
-      northing = 0
+      point.easting = 0
+      point.northing = 0
       break
     case 'T':
-      easting = 500000
-      northing = 0
+      point.easting = 500000
+      point.northing = 0
       break
     case 'N':
-      easting = 0
-      northing = 500000
+      point.easting = 0
+      point.northing = 500000
       break
     case 'O':
-      easting = 500000
-      northing = 500000
+      point.easting = 500000
+      point.northing = 500000
       break
     case 'H':
-      easting = 0
-      northing = 1000000
+      point.easting = 0
+      point.northing = 1000000
       break
     default:
-      return end()
   }
+  return point
+}
 
-  if (ngr.charAt(1) === 'I') {
-    return end()
+const ngrToBng = ngr => {
+  ngr = ngr.toUpperCase().replace(/\s+/g, '')
+  const point = getBaseValues(ngr)
+
+  if (isNaN(point.easting) || isNaN(point.northing) || ngr.charAt(1) === 'I') {
+    return {}
   }
 
   let i = ngr.charCodeAt(1) - 65
@@ -50,12 +39,12 @@ const ngrToBng = (ngr) => {
     i -= 1
   }
 
-  easting += (i % 5) * 100000
-  northing += (4 - Math.floor(i / 5)) * 100000
+  point.easting += (i % 5) * 100000
+  point.northing += (4 - Math.floor(i / 5)) * 100000
 
   const ii = ngr.substr(2)
   if ((ii.length % 2) === 1 || ii.length > 10) {
-    return end()
+    return {}
   }
 
   let iii = ii.substr(0, ii.length / 2)
@@ -63,10 +52,10 @@ const ngrToBng = (ngr) => {
     iii += '0'
   }
 
-  easting += parseInt(iii, 10)
+  point.easting += parseInt(iii, 10)
 
-  if (isNaN(easting)) {
-    return end()
+  if (isNaN(point.easting)) {
+    return {}
   }
 
   let iv = ii.substr(ii.length / 2)
@@ -75,13 +64,13 @@ const ngrToBng = (ngr) => {
     iv += '0'
   }
 
-  northing += parseInt(iv, 10)
+  point.northing += parseInt(iv, 10)
 
-  if (isNaN(northing) || isNaN(easting)) {
-    return end()
+  if (isNaN(point.northing)) {
+    return {}
   }
 
-  return end(easting, northing)
+  return point
 }
 
 export default ngrToBng
