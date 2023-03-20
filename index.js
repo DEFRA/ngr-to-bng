@@ -26,6 +26,32 @@ const getBaseValues = ngr => {
   return point
 }
 
+const getPart1 = ngr => {
+  let part1 = ngr.charCodeAt(1) - 65
+  if (part1 > 8) {
+    part1 -= 1
+  }
+  return part1
+}
+
+const getPart2 = ngr => ngr.substr(2)
+
+const getPart3 = (ngr, part2) => {
+  let part3 = part2.substr(0, part2.length / 2)
+  while (part3.length < 5) {
+    part3 += '0'
+  }
+  return part3
+}
+
+const getPart4 = (ngr, part2) => {
+  let part4 = part2.substr(part2.length / 2)
+  while (part4.length < 5) {
+    part4 += '0'
+  }
+  return part4
+}
+
 const ngrToBng = ngr => {
   ngr = ngr.toUpperCase().replace(/\s+/g, '')
   const point = getBaseValues(ngr)
@@ -34,39 +60,25 @@ const ngrToBng = ngr => {
     return {}
   }
 
-  let i = ngr.charCodeAt(1) - 65
-  if (i > 8) {
-    i -= 1
-  }
+  const part1 = getPart1(ngr)
 
-  point.easting += (i % 5) * 100000
-  point.northing += (4 - Math.floor(i / 5)) * 100000
+  point.easting += (part1 % 5) * 100000
+  point.northing += (4 - Math.floor(part1 / 5)) * 100000
 
-  const ii = ngr.substr(2)
-  if ((ii.length % 2) === 1 || ii.length > 10) {
+  const part2 = getPart2(ngr)
+  if ((part2.length % 2) === 1 || part2.length > 10) {
     return {}
   }
 
-  let iii = ii.substr(0, ii.length / 2)
-  while (iii.length < 5) {
-    iii += '0'
-  }
+  const part3 = getPart3(ngr, part2)
 
-  point.easting += parseInt(iii, 10)
+  point.easting += parseInt(part3, 10)
 
-  if (isNaN(point.easting)) {
-    return {}
-  }
+  const part4 = getPart4(ngr, part2)
 
-  let iv = ii.substr(ii.length / 2)
+  point.northing += parseInt(part4, 10)
 
-  while (iv.length < 5) {
-    iv += '0'
-  }
-
-  point.northing += parseInt(iv, 10)
-
-  if (isNaN(point.northing)) {
+  if (isNaN(point.easting) || isNaN(point.northing)) {
     return {}
   }
 
