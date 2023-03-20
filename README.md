@@ -1,4 +1,4 @@
-[![Build Status](https://travis-ci.org/EnvironmentAgency/ngr-to-bng.svg?branch=master)](https://travis-ci.org/EnvironmentAgency/ngr-to-bng)
+[![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=DEFRA_ngr-to-bng&metric=alert_status)](https://sonarcloud.io/summary/new_code?id=DEFRA_ngr-to-bng)
 
 # NGR-to-BNG
 
@@ -12,7 +12,11 @@ npm install --save ngr-to-bng
 ## Usage
 
 ```
-let point = require('ngr-to-bng')('SP3683367955')
+import ngrToBng from 'ngr-to-bng'
+
+...
+
+const point = ngrToBng('SP3683367955')
 ```
 
 # License
