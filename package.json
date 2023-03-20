@@ -29,5 +29,8 @@
       "node",
       "jest"
     ]
+  },
+  "jest": {
+    "collectCoverage": true
   }
 }
