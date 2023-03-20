@@ -12,7 +12,11 @@ npm install --save ngr-to-bng
 ## Usage
 
 ```
-let point = require('ngr-to-bng')('SP3683367955')
+import ngrToBng from 'ngr-to-bng'
+
+...
+
+const point = ngrToBng('SP3683367955')
 ```
 
 # License
